@@ -18,7 +18,8 @@ def ask_for_leave():
                               type_of_meeting=form.meeting_type.data,
                               reason_for_leave=form.reason.data,
                               leave_time=datetime.utcnow(),
-                              user_id=current_user.id)
+                              user_id=current_user.id,
+                              actual_time=datetime.now())
         db.session.add(appli)
         return redirect(url_for('.profile', username=current_user.name))
     return render_template('ask_for_leave.html', form=form)

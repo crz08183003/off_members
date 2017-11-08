@@ -3,7 +3,7 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask_login import UserMixin, AnonymousUserMixin
 from datetime import datetime
 from .extentions import db
-from .extentions import login_manager
+from .extentions import login_manager, moment
 
 class Asks_forleave(db.Model):
     __tablename__ = 'asks'
@@ -11,6 +11,7 @@ class Asks_forleave(db.Model):
     leave_time = db.Column(db.DateTime(), default=datetime.utcnow())
     group = db.Column(db.String(32), index=True)
     type_of_meeting = db.Column(db.String(32), index=True)
+    actual_time = db.Column(db.String(64), default=datetime.now())
     reason_for_leave = db.Column(db.String(128), index=True)
     user_id = db.Column(db.Integer(), db.ForeignKey('users.id'))
 
