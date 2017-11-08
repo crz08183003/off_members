@@ -1,17 +1,9 @@
 from flask import Flask, request, flash, redirect, render_template, url_for, session
-from flask_sqlalchemy import SQLAlchemy
-from flask_bootstrap import Bootstrap
-from flask_login import LoginManager
-from flask_mail import Mail
-from flask_moment import Moment
 from config import config
+from .admin import AskleaveModelView, MyView
+from flask_admin import Admin, AdminIndexView
+from .extentions import (db, mail, bootstrap, login_manager, moment, babel, admin)
 
-db = SQLAlchemy()   # 数据库
-mail = Mail()       # 邮件
-bootstrap = Bootstrap()  # 蓝本
-moment = Moment()
-
-login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 
@@ -25,6 +17,16 @@ def create_app(config_name):
     login_manager.init_app(app)
     mail.init_app(app)
     moment.init_app(app)
+    babel.init_app(app)
+    admin.init_app(app, index_view=AdminIndexView(
+        name=u'后台管理',
+        template='admin_index.html',
+        url='/YouGuess'
+    ))
+
+    admin.add_view(MyView(name='主页'))
+    admin.add_view(AskleaveModelView(db.session, name=u'管理请假信息'))
+
 
     from .main import main as main_blueprint
     from .auth import auth as auth_blueprint

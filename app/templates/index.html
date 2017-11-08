@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends "base.html" %}
+    {% block title %}
+    主页
+    {% endblock %}
+    {% block page_content %}
+        <div class="col-md-9 col-md-offset-1 row margin-top-20">
+            <p><strong>{{current_user.name}}</strong><br>欢迎来到学生在线请假网！</p>
+        </div>
+    {% endblock %}

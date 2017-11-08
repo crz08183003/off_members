@@ -26,6 +26,8 @@ class DevelopmentConfig(Config):
     MAIL_PASSWORD = 'lkyjanowjthcbjbc'
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+    # flask-babelex配置,汉化admin页面
+    BABEL_DEFAULT_LOCALE = 'zh_CN'
 
 
 class TestingConfig(Config):

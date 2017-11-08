@@ -1,9 +1,10 @@
     {% extends "base.html" %}
+    {% import "_macros.html" as macros%}
     {% block title %}
     请假信息
     {% endblock %}
     {% block page_content %}
-        <div class="col-md-9 col-md-offset-1 row margin-top-20">
+    <div class="col-md-9 col-md-offset-1 row margin-top-20">
             <table class="width-auto table table-hover">
                 <thead>
                     <tr style="color:#CDC8B1;">
@@ -24,5 +25,8 @@
                     {% endfor %}
                 </tbody>
             </table>
+        {% if pagination %}
+        {{macros.pagination_widget(pagination,'main.profile', username=current_user.name)}}
+        {% endif %}
         </div>
     {% endblock %}

@@ -1,11 +1,9 @@
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask import current_app, request
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask_login import UserMixin, AnonymousUserMixin
 from datetime import datetime
-import hashlib
-from . import db
-from . import login_manager
+from .extentions import db
+from .extentions import login_manager
 
 class Asks_forleave(db.Model):
     __tablename__ = 'asks'
@@ -50,7 +48,7 @@ class User(UserMixin, db.Model):
         db.session.add(self)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<User %r>' % self.name
 
 
 @login_manager.user_loader

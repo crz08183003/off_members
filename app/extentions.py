@@ -7,10 +7,7 @@ bootstrap = Bootstrap()  # 蓝本
 
 from flask_login import LoginManager
 
-
 login_manager = LoginManager()
-login_manager.session_protection = 'strong'
-login_manager.login_view = 'auth.login'
 
 from flask_mail import Mail
 
@@ -20,11 +17,11 @@ from flask_moment import Moment
 
 moment = Moment()
 
-from flask_admin import Admin, AdminIndexView
+from flask_admin import Admin
 
-admin = Admin(index_view=AdminIndexView(
-        name='导航栏',
-        url='/admin'))
+admin = Admin()
 
+from flask_babelex import Babel
 
+babel = Babel()
 
