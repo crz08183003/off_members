@@ -8,7 +8,6 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="" rel="stylesheet">
-<link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta/css/bootstrap-grid.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/static/login.css">
 <!--<script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta/js/bootstrap.js"></script>-->
 </head>
@@ -31,21 +30,21 @@
             <form class="form" method="POST">
                 {% import "bootstrap/wtf.html" as wtf %}
                 {{ form.hidden_tag() }}
-                {{ wtf.form_field(form.stu_number)}}
+                {{ wtf.form_field(form.stu_number, style="font-size: 16px")}}
                 {{ wtf.form_field(form.password)}}
                 {{ wtf.form_field(form.submit, class="button button-3d button-action button-pill")}}
             </form>
             </div>
         </div>
     </section>
-    <footer>
-        <ul>
-            <li class="li1">版权所有：中国矿业大学学生在线</li>
-            <li class="li2">地址：江苏省徐州市大学路中国矿业大学南湖校区</li>
-            <li class="li3">QQ：2822301878</li>
-            <li class="li4"> 邮箱：online_cumt@foxmail.com
-                                <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;online@cut.edu.com</li>
-        </ul>
-    </footer>
+    <!--<footer>-->
+        <!--<ul>-->
+            <!--<li class="li1">版权所有：中国矿业大学学生在线</li>-->
+            <!--<li class="li2">地址：江苏省徐州市大学路中国矿业大学南湖校区</li>-->
+            <!--<li class="li3">QQ：2822301878</li>-->
+            <!--<li class="li4"> 邮箱：online_cumt@foxmail.com-->
+                                <!--<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;online@cut.edu.com</li>-->
+        <!--</ul>-->
+    <!--</footer>-->
 </body>
 </html>

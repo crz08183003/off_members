@@ -5,6 +5,16 @@ from datetime import datetime
 from .extentions import db
 from .extentions import login_manager, moment
 
+class Grouptype(db.Model):
+    __tablename__ = 'grouptype'
+    id = db.Column(db.Integer, primary_key=True)
+    group = db.Column(db.String(20), index=True)
+
+class Meetingtype(db.Model):
+    __tablename__ = 'meetingtype'
+    id = db.Column(db.Integer, primary_key=True)
+    meeting = db.Column(db.String(20), index=True)
+
 class Asks_forleave(db.Model):
     __tablename__ = 'asks'
     id = db.Column(db.Integer, primary_key=True)

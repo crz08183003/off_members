@@ -1,21 +1,20 @@
 
 {% extends "base.html" %}
-    {% import "_macros.html" as macros%}
+{% block title %}
+请假
+{% endblock %}
+{% block page_content %}
+<div class="col-md-9 col-md-offset-1 row margin-top-20" style="color:#CDC8B1;">
     {{ moment.include_jquery() }}
     {{ moment.include_moment() }}
 
      <!--使用中文,默认是英语的-->
-　　 {{ moment.lang("zh-CN") }}
-    {% block title %}
-    请假
-    {% endblock %}
-    {% block page_content %}
-    <div class="col-md-9 col-md-offset-1 row margin-top-20" style="color:#CDC8B1;">
-         <p >用户名称：<strong>{{current_user.name}},</strong></p>
-         <p>现在时间为: {{ moment().format('YYYY年M月D日, h:mm:ss a') }}.</p>
-         <!--<p>{{ moment().calendar() }}.</p>-->
-         {% import "bootstrap/wtf.html" as wtf %}
-         {{wtf.quick_form(form)}}
+    {{ moment.lang("zh-CN") }}
+    <p >用户名称：<strong>{{current_user.name}},</strong></p>
+    <p>现在时间为: {{ moment().format('YYYY年M月D日, h:mm:ss a')}}.</p>
+    <!--<p>{{ moment().calendar() }}.</p>-->
+    {% import "bootstrap/wtf.html" as wtf %}
+    {{wtf.quick_form(form)}}
 
-    </div>
-    {% endblock %}
+</div>
+{% endblock %}

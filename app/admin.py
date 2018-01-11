@@ -2,8 +2,57 @@ from flask_admin import BaseView, expose
 from flask_admin.contrib.sqla import ModelView
 from flask import render_template
 from flask_login import current_user
-from .models import Asks_forleave
+from .models import Asks_forleave, Grouptype, Meetingtype
 
+# class GroupModelView(ModelView):
+#     def is_accessible(self):
+#         if current_user.is_authenticated and current_user.name == 'icbtbo':
+#             return True
+#         return False
+#
+#     column_searchable_list = ('group')
+#     column_filters = ('group')
+#     can_create = True
+#     column_labels = {
+#         'id': u'序号',
+#         'group': u'组别',
+#     }
+#     column_list = ('id', 'group')
+#     def __init__(self, session, **kwargs):
+#         super(GroupModelView, self).__init__(Grouptype, session, **kwargs)
+class GroupModelView(ModelView):
+    def is_accessible(self):
+        if current_user.is_authenticated and current_user.name == 'icbtbo':
+            return True
+        return False
+
+    # column_searchable_list = ('group')
+    # column_filters = ('group')
+    can_create = True
+    column_labels = {
+        'id': u'序号',
+        'group': u'组别',
+    }
+    column_list = ('id', 'group')
+    def __init__(self, session, **kwargs):
+        super(GroupModelView, self).__init__(Grouptype, session, **kwargs)
+
+class MeetingModelView(ModelView):
+    def is_accessible(self):
+        if current_user.is_authenticated and current_user.name == 'icbtbo':
+            return True
+        return False
+
+    # column_searchable_list = ('group')
+    # column_filters = ('group')
+    can_create = True
+    column_labels = {
+        'id': u'序号',
+        'meeting': u'会议类型',
+    }
+    column_list = ('id', 'meeting')
+    def __init__(self, session, **kwargs):
+        super(MeetingModelView, self).__init__(Meetingtype, session, **kwargs)
 
 class AskleaveModelView(ModelView):
     def is_accessible(self):
@@ -34,6 +83,6 @@ class MyView(BaseView):
             return True
         return False
 
-    @expose('/', methods=['GET','POST'])
+    @expose('/', methods=['GET', 'POST'])
     def admin_index(self):
         return self.render('admin_index.html')

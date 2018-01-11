@@ -1,6 +1,6 @@
 from flask import Flask, request, flash, redirect, render_template, url_for, session
 from config import config
-from .admin import AskleaveModelView, MyView
+from .admin import AskleaveModelView, MyView, MeetingModelView, GroupModelView
 from flask_admin import Admin, AdminIndexView
 from .extentions import (db, mail, bootstrap, login_manager, moment, babel, admin)
 
@@ -26,6 +26,8 @@ def create_app(config_name):
 
     admin.add_view(MyView(name='主页'))
     admin.add_view(AskleaveModelView(db.session, name=u'管理请假信息'))
+    admin.add_view(MeetingModelView(db.session, name=u'管理会议名'))
+    admin.add_view(GroupModelView(db.session, name=u'管理组名'))
 
 
     from .main import main as main_blueprint

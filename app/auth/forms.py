@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, Length, Regexp, ValidationError, Eq
 from ..models import User
 # 登录表单
 class LoginForm(FlaskForm):
-    stu_number = StringField('学号', validators=[DataRequired()])
+    stu_number = StringField('学号', validators=[DataRequired(), Length(8, 14)], render_kw={"style": "font-size: 5px"})
     password = PasswordField('密码', validators=[DataRequired()])
     # remember_me = BooleanField('记住我')
     submit = SubmitField('Log In')
