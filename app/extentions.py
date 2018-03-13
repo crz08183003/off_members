@@ -9,10 +9,6 @@ from flask_login import LoginManager
 
 login_manager = LoginManager()
 
-from flask_mail import Mail
-
-mail = Mail()       # 邮件
-
 from flask_moment import Moment
 
 moment = Moment()

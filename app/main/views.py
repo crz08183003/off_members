@@ -1,12 +1,10 @@
 from flask import render_template, request, session, redirect, url_for, flash
 from flask_login import login_required, current_user
-from .forms import EditProfileAdminForm, EditProfileForm, Ask_leaveForm
-# from ..decorators import admin_required
+from .forms import Ask_leaveForm
 from datetime import datetime
 from . import main
 from .. import db
 from ..models import User, Asks_forleave
-
 
 
 @main.route('/ask_for_leave', methods=['GET', 'POST'])
@@ -25,7 +23,9 @@ def ask_for_leave():
     return render_template('ask_for_leave.html', form=form)
 
 # 请假信息
-@main.route('/profile/<username>', methods=['GET','POST'])
+
+
+@main.route('/profile/<username>', methods=['GET', 'POST'])
 @login_required
 def profile(username):
     user = User.query.filter_by(name=username).first_or_404()
@@ -38,6 +38,7 @@ def profile(username):
     apli = pagination.items
     return render_template('profile.html', applications=apli, pagination=pagination)
 
-@main.route('/', methods=['GET','POST'])
+
+@main.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
