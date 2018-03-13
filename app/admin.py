@@ -1,28 +1,20 @@
 from flask_admin import BaseView, expose
 from flask_admin.contrib.sqla import ModelView
-from flask import render_template
-from flask_login import current_user
+from flask import render_template, session
+from flask_login import current_user, login_required
 from .models import Asks_forleave, Grouptype, Meetingtype
 
-# class GroupModelView(ModelView):
-#     def is_accessible(self):
-#         if current_user.is_authenticated and current_user.name == 'icbtbo':
-#             return True
-#         return False
-#
-#     column_searchable_list = ('group')
-#     column_filters = ('group')
-#     can_create = True
-#     column_labels = {
-#         'id': u'序号',
-#         'group': u'组别',
-#     }
-#     column_list = ('id', 'group')
-#     def __init__(self, session, **kwargs):
-#         super(GroupModelView, self).__init__(Grouptype, session, **kwargs)
+
+@login_required
+def confirm():
+    if current_user.admin:
+        return True
+    return False
+
+
 class GroupModelView(ModelView):
     def is_accessible(self):
-        if current_user.is_authenticated and current_user.name == 'icbtbo':
+        if current_user.is_authenticated and confirm():
             return True
         return False
 
@@ -39,7 +31,7 @@ class GroupModelView(ModelView):
 
 class MeetingModelView(ModelView):
     def is_accessible(self):
-        if current_user.is_authenticated and current_user.name == 'icbtbo':
+        if current_user.is_authenticated and confirm():
             return True
         return False
 
@@ -56,7 +48,7 @@ class MeetingModelView(ModelView):
 
 class AskleaveModelView(ModelView):
     def is_accessible(self):
-        if current_user.is_authenticated and current_user.name == 'icbtbo':
+        if current_user.is_authenticated and confirm():
             return True
         return False
 
@@ -79,7 +71,7 @@ class AskleaveModelView(ModelView):
 
 class MyView(BaseView):
     def is_accessible(self):
-        if current_user.is_authenticated and current_user.name == 'icbtbo':
+        if current_user.is_authenticated and confirm:
             return True
         return False
 

@@ -32,6 +32,7 @@ class User(UserMixin, db.Model):
     stu_number = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     name = db.Column(db.String(64))
+    admin = db.Column(db.Boolean, default=False, index=True)
     leave_applications = db.relationship(
         'Asks_forleave',
         backref='user',
@@ -65,3 +66,4 @@ class User(UserMixin, db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
