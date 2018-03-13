@@ -23,7 +23,7 @@ def create_app(config_name):
         url='/YouGuess'
     ))
 
-    admin.add_view(MyView(name='主页'))
+    admin.add_view(MyView(name='前台'))
     admin.add_view(AskleaveModelView(db.session, name=u'管理请假信息'))
     admin.add_view(MeetingModelView(db.session, name=u'管理会议名'))
     admin.add_view(GroupModelView(db.session, name=u'管理组名'))

@@ -1,4 +1,10 @@
 {% extends 'admin/master.html' %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/admin.css">
+{% endblock %}
 {% block body %}
-    欢迎来到学生在线请假网后台！
+<div class="adminpage">
+    <img src="{{ url_for('static', filename='images/admin.gif') }}" />
+</div>
 {% endblock %}

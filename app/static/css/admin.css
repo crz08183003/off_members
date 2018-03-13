@@ -1,0 +1,7 @@
+.adminpage{
+    padding: 20px;       
+    position: absolute;       
+    top: 50%; left: 50%;       
+    margin-left: -190px; /* (width + padding)/2 */      
+    margin-top: -120px; /* (height + padding)/2 */
+}

@@ -1,6 +1,18 @@
 # 工作室内部请假网
 
-# 本地预览
+## 本地预览
+
+### Docker一键预览
+
+```
+docker-compose up -d
+```
+
+>访问127.0.0.1:5000即可
+(数据库文件挂载在config/data)
+
+### 源码安装
+
 > 依次按以下命令执行
 
 ``` stylus
@@ -54,3 +66,9 @@ $ db.session.commit()
 //执行导入数据函数
 $ read_excel()
 ```
+
+**部署的时候记得切换config为生产环境**
+
+![index](app/static/images/index.png)
+![login](app/static/images/login.png)
+![off](app/static/images/off.png)

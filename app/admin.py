@@ -18,8 +18,6 @@ class GroupModelView(ModelView):
             return True
         return False
 
-    # column_searchable_list = ('group')
-    # column_filters = ('group')
     can_create = True
     column_labels = {
         'id': u'序号',
@@ -35,8 +33,6 @@ class MeetingModelView(ModelView):
             return True
         return False
 
-    # column_searchable_list = ('group')
-    # column_filters = ('group')
     can_create = True
     column_labels = {
         'id': u'序号',
@@ -77,4 +73,4 @@ class MyView(BaseView):
 
     @expose('/', methods=['GET', 'POST'])
     def admin_index(self):
-        return self.render('admin_index.html')
+        return self.render('index.html')
