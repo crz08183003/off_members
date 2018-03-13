@@ -4,9 +4,8 @@ from wtforms.validators import DataRequired, Length, EqualTo
 
 # 登录表单
 class LoginForm(FlaskForm):
-    stu_number = StringField('', validators=[DataRequired(), Length(8, 14)])
-    password = PasswordField('', validators=[DataRequired()])
-    submit = SubmitField('登录')
+    stu_number = StringField('', validators=[DataRequired(), Length(8, 14)],render_kw={"placeholder": u"学号"})
+    password = PasswordField('', validators=[DataRequired()],render_kw={"placeholder": u"密码"})
 
 # 修改密码表单
 class ChangePasswordForm(FlaskForm):
