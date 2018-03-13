@@ -1,0 +1,30 @@
+ {% extends "base.html" %} {% import "_macros.html" as macros%} {% block title %} 请假历史 {% endblock %} {% block page_content
+%}
+<div class="col-md-offset-1">
+    <table class="width-auto table table-bordered">
+        <thead>
+            <tr style="color:rgb(202, 184, 112);">
+                <th>所在组别</th>
+                <th>会议类型</th>
+                <th>请假时间</th>
+                <th>请假原因</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appli in applications %}
+            <tr style="color:rgb(206, 204, 193);">
+                <td>{{appli.group}}</td>
+                <td>{{appli.type_of_meeting}}</td>
+                <td>{{appli.actual_time}}</td>
+                <td>{{appli.reason_for_leave}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% if pagination %}
+<nav aria-label="Page navigation" class="col-md-4 col-md-offset-5">
+    {{macros.pagination_widget(pagination,'main.profile', username=current_user.name)}}
+</nav>
+{% endif %}
+{% endblock %}
