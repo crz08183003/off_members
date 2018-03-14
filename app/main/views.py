@@ -22,9 +22,7 @@ def ask_for_leave():
         return redirect(url_for('.profile', username=current_user.name))
     return render_template('ask_for_leave.html', form=form)
 
-# 请假信息
-
-
+# 请假历史
 @main.route('/profile/<username>', methods=['GET', 'POST'])
 @login_required
 def profile(username):
@@ -39,6 +37,6 @@ def profile(username):
     return render_template('profile.html', applications=apli, pagination=pagination)
 
 
-@main.route('/', methods=['GET', 'POST'])
+@main.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
