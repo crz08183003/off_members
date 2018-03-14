@@ -1,0 +1,10 @@
+version: '2'
+services:
+  leave:
+    build: .
+    volumes:
+    - /home/bay1/off_memebers/config/data:/app/config/data
+    ports:
+      - 5000:5000
+    command: python /app/manage.py runserver
+    restart: always

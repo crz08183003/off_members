@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} 登录 {% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="/static/css/login.css">
+{% endblock %}
+{% block page_content %}
+<section>
+    <div class="container">
+        <div style="width:100%; text-align:center">
+            <div class="text-primary">请登录</div>
+            <hr style="width:40%; display:inline-block;" />
+        </div>
+        <div class="d1">
+            <form class="form" method="POST">
+                {% import "bootstrap/wtf.html" as wtf %} 
+                {{ form.hidden_tag() }} 
+                {{ wtf.form_field(form.stu_number)}}
+                {{ wtf.form_field(form.password)}}
+                <input class="btn btn-success" type="submit" value="登录">
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}
